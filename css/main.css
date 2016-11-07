@@ -157,7 +157,8 @@ nav a:hover {
 
 .slide {
     width:100%;
-    height:100%;
+    /*height:100%;*/
+    position:absolute;
 }
 
 .full-img{
