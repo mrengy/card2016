@@ -1,5 +1,11 @@
 $( document ).ready(function() {
-    $("#slide-1").fadeTo(1000,0,
-    	function(){$("#slide-1").addClass('hidden');}
-    );
+    fadeOut($("#slide-1"));
+
+    function fadeOut(target){
+    	target.fadeTo(1000,0,
+    		function(){
+    			target.addClass('hidden');
+    		}
+    	);
+    }
 });
