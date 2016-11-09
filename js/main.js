@@ -1,11 +1,17 @@
 $( document ).ready(function() {
-    fadeOut($("#slide-1"));
+    var initialTimeout = window.setTimeout(fadeOutSlide1, 4000);
+
+    function fadeOutSlide1(){
+    	fadeOut($("#slide-1"));
+    }
 
     function fadeOut(target){
-    	target.fadeTo(1000,0,
+    	target.fadeTo(3000,0,'swing',
     		function(){
     			target.addClass('hidden');
     		}
     	);
     }
+
+
 });
