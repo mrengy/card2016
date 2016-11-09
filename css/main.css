@@ -1,7 +1,7 @@
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 
 html {
-    color: #DDD;
+    color: #FFF;
     font-size: 1em;
     line-height: 1.4;
 }
@@ -175,12 +175,16 @@ nav a:hover {
     text-align:left;
 }
 
+.clear{
+    opacity:0.0;
+}
+
     /* Slides */
 
     #slide-1{
         z-index:9;
     }
-    #slide-2{
+    #message{
         z-index:8;
     }
     #slide-3{
