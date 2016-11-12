@@ -189,7 +189,7 @@ a {
     #slide-1, #kepler, .lightning{
         z-index:9;
     }
-    #message, #credit{
+    #slide-2, #credit{
         z-index:8;
     }
     #slide-3{

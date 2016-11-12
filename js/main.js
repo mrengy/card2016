@@ -6,6 +6,7 @@ $( document ).ready(function() {
 
     function fadeOutSlide1(){
     	fadeOut($("#slide-1"));
+    	reveal($("#slide-2"));
     	var afterSlide1Timeout = window.setTimeout(revealSlide3, pauseTime);
     }
 
