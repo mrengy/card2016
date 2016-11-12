@@ -195,6 +195,7 @@ a {
     #slide-3{
         z-index:6;
         background:#AD6E1A;
+        overflow:hidden;
     }
     #slide-4{
         z-index:7;
@@ -208,6 +209,7 @@ a {
 }
 
 #kepler{
+    z-index:8;
     position:absolute;
     bottom:-20px;
     right:10%;
