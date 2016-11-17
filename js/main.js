@@ -41,12 +41,22 @@ $( document ).ready(function() {
     var wThis = getRandomInt(minWidth, w0);
     var hThis = wThis / (w0/h0)
     var topThis = getRandomInt(0, $(window).height());
+    var lThis = parseInt(lightning[0].css("left"));
     lightning[0].css("width", wThis);
     lightning[0].css("height", hThis);
     lightning[0].css("top", topThis);
 
+    	/*moving lightning*/
+    var lightningMoveInterval = setInterval(moveLightning, 20);
     
-    /*reusable functions*/
+    function moveLightning(){
+    	console.log('moveLightning ran');
+    	lightning[0].css("left", lThis);
+    	lThis ++;
+    }
+
+
+    	/*reusable generic functions*/
     function getRandomInt (min, max) {
 	    return Math.floor(Math.random()*(max-min+1)+min);
 	}
