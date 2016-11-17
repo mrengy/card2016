@@ -1,6 +1,7 @@
 $( document ).ready(function() {
-    var pauseTime = 4000;
-    var transitionTime = 3000;
+    /* slide transitions */
+    var pauseTime = 4;
+    var transitionTime = 3;
 
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
 
@@ -27,4 +28,26 @@ $( document ).ready(function() {
     	target.fadeTo(transitionTime,1,'swing');
     }
 
+    /*lightning*/
+    var lightning = {};
+
+    	/*initial lightning definition*/
+	lightning[0] = $(".lightning");
+    var w0 = parseInt(lightning[0].css("width"), 10);
+    var h0 = parseInt(lightning[0].css("height"), 10);
+    var minWidth = w0 / 4;
+
+    	/*setting next lightning*/
+    var wThis = getRandomInt(minWidth, w0);
+    var hThis = wThis / (w0/h0)
+    var topThis = getRandomInt(0, $(window).height());
+    lightning[0].css("width", wThis);
+    lightning[0].css("height", hThis);
+    lightning[0].css("top", topThis);
+
+    
+    /*reusable functions*/
+    function getRandomInt (min, max) {
+	    return Math.floor(Math.random()*(max-min+1)+min);
+	}
 });
