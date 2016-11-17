@@ -50,7 +50,6 @@ $( document ).ready(function() {
     var lightningMoveInterval = setInterval(moveLightning, 20);
     
     function moveLightning(){
-    	console.log('moveLightning ran');
     	lightning[0].css("left", lThis);
     	lThis ++;
     }
