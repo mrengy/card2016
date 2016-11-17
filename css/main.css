@@ -217,6 +217,7 @@ a {
 
 #credit{
     text-align:left;
+    position:relative;
 }
 
 #credit h2{
