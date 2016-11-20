@@ -50,8 +50,11 @@ $( document ).ready(function() {
     var lightningMoveInterval = setInterval(moveLightning, 20);
     
     function moveLightning(){
-    	lightning[0].css("left", lThis);
-    	lThis ++;
+    	//only start when slide 3 is done
+    	if( $("#slide-3").css("opacity")==1){
+    		lightning[0].css("left", lThis);
+    		lThis ++;
+    	}
     }
 
 
