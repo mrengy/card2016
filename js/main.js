@@ -1,7 +1,7 @@
 $( document ).ready(function() {
     /* slide transitions */
-    var pauseTime = 4;
-    var transitionTime = 3;
+    var pauseTime = 4000;
+    var transitionTime = 3000;
 
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
 
