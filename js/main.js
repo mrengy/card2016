@@ -29,13 +29,13 @@ $( document ).ready(function() {
     	//target.removeClass('hidden');
     	target.fadeTo(transitionTime,1,'swing', function(){
             
-            //set the slide completed to the target of this reveal
+            //add this slide id to the array listing completed slide names
             slideCompleted.push(target[0].id);
         });
     }
 
     /*lightning*/
-    var lightning = {};
+    var lightning = new Array();
 
         /* time to wait between lightning (also randomly adjusted each time)*/
     var lightningTime = 2000;
@@ -66,6 +66,7 @@ $( document ).ready(function() {
     	}
     }
 
+    console.log(lightning[0]);
 
     	/*reusable generic functions*/
     function getRandomInt (min, max) {
