@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
 
-    var slideCompleted = "none";
+    var slideCompleted = new Array();
 
     function fadeOutSlide1(){
     	fadeOut($("#slide-1"));
@@ -30,7 +30,7 @@ $( document ).ready(function() {
     	target.fadeTo(transitionTime,1,'swing', function(){
             
             //set the slide completed to the target of this reveal
-            slideCompleted = target[0].id;
+            slideCompleted.push(target[0].id);
         });
     }
 
@@ -60,7 +60,7 @@ $( document ).ready(function() {
     
     function moveLightning(){
     	//only start when slide 3 is done
-    	if( slideCompleted == "slide-3"){
+    	if( $.inArray("slide-3",slideCompleted) !== -1){
     		lightning[0].css("left", lThis);
     		lThis ++;
     	}
