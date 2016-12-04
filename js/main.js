@@ -1,7 +1,7 @@
 $( document ).ready(function() {
     /* slide transitions */
-    var pauseTime = 4;
-    var transitionTime = 3;
+    var pauseTime = 400;
+    var transitionTime = 300;
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
     var slideCompleted = new Array();
     var lightningSpawning = false;
