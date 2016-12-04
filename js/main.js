@@ -2,10 +2,9 @@ $( document ).ready(function() {
     /* slide transitions */
     var pauseTime = 4;
     var transitionTime = 3;
-
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
-
     var slideCompleted = new Array();
+    var lightningSpawning = false;
 
     function fadeOutSlide1(){
     	fadeOut($("#slide-1"));
@@ -63,10 +62,12 @@ $( document ).ready(function() {
     	if( $.inArray("slide-3",slideCompleted) !== -1){
     		lightning[0].css("left", lThis);
     		lThis ++;
+            if ( (lightningSpawning == false) && ( parseFloat(lightning[0].css("left")) > $(window).width() ) ){
+                console.log('start the party');
+                lightningSpawning = true;
+            }
     	}
     }
-
-    console.log(lightning[0]);
 
     	/*reusable generic functions*/
     function getRandomInt (min, max) {
