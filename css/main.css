@@ -213,7 +213,7 @@ a {
 
 #kepler{
     z-index:8;
-    position:absolute;
+    position:relative;
     bottom:-20px;
     right:10%;
 }
