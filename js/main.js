@@ -1,9 +1,11 @@
 $( document ).ready(function() {
     /* slide transitions */
-    var pauseTime = 4000;
-    var transitionTime = 3000;
+    var pauseTime = 4;
+    var transitionTime = 3;
 
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
+
+    var slideCompleted = "none";
 
     function fadeOutSlide1(){
     	fadeOut($("#slide-1"));
@@ -25,11 +27,18 @@ $( document ).ready(function() {
 
     function reveal(target){
     	//target.removeClass('hidden');
-    	target.fadeTo(transitionTime,1,'swing');
+    	target.fadeTo(transitionTime,1,'swing', function(){
+            
+            //set the slide completed to the target of this reveal
+            slideCompleted = target[0].id;
+        });
     }
 
     /*lightning*/
     var lightning = {};
+
+        /* time to wait between lightning (also randomly adjusted each time)*/
+    var lightningTime = 2000;
 
     	/*initial lightning definition*/
 	lightning[0] = $(".lightning");
@@ -47,11 +56,11 @@ $( document ).ready(function() {
     lightning[0].css("top", topThis);
 
     	/*moving lightning*/
-    var lightningMoveInterval = setInterval(moveLightning, 20);
+    var lightningMoveInterval = setInterval(moveLightning, 10);
     
     function moveLightning(){
     	//only start when slide 3 is done
-    	if( $("#slide-3").css("opacity")==1){
+    	if( slideCompleted == "slide-3"){
     		lightning[0].css("left", lThis);
     		lThis ++;
     	}
