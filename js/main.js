@@ -75,5 +75,14 @@ $( document ).ready(function() {
 	}
 
     /*positioning bubble*/
-    
+    var $window = $(window),
+        $footer = $('footer'),
+        $bubble = $('#bubble'),
+        footerTop = $footer.offset().top;
+
+    $window.scroll(function(){
+        $bubble.toggleClass('offscreen', $window.scrollTop() < footerTop);
+        console.log("footerTop: "+footerTop);
+        console.log("scrollTop: "+$window.scrollTop());
+    });
 });
