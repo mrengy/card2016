@@ -274,7 +274,7 @@ a {
 .bubble.offscreen{
     position:fixed;
     bottom:15px;
-    /*top:1em;*/
+    top:auto;
 }
 body{
     overflow-x:hidden;
