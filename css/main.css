@@ -250,11 +250,12 @@ a {
     width: 90%;
     height:2em;
     padding: 1em;
-    background: #FFFFFF;
+    background: #DDD;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     text-align:left;
+    z-index:10;
 }
 
 #bubble:after {
