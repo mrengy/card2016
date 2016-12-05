@@ -244,10 +244,10 @@ a {
     margin:0;
 }
 
-.bubble {
+#bubble {
     color:#999;
     position: relative;
-    width: 85%;
+    width: 90%;
     height:2em;
     padding: 1em;
     background: #FFFFFF;
@@ -257,7 +257,7 @@ a {
     text-align:left;
 }
 
-.bubble:after {
+#bubble:after {
     content: '';
     position: absolute;
     border-style: solid;
@@ -271,14 +271,14 @@ a {
     left: 50%;
 }
 
-.bubble.offscreen{
+#bubble.offscreen{
     position:fixed;
     bottom:15px;
     top:auto;
     width:85%;
 }
 
-.bubble.offscreen:after {
+#bubble.offscreen:after {
     position: fixed;
     bottom: 0;
     left: 50%;
@@ -304,21 +304,21 @@ body{
     #kepler{
         margin-top:0;
     }
-    .bubble{
+    #bubble{
         position:absolute;
         width:100%;
         top:-4em;
     }
 
     /*offscreen bubble*/
-    .bubble.offscreen{
+    #bubble.offscreen{
         position:fixed;
         bottom:15px;
         top:auto;
         width:45%;
     }
 
-    .bubble.offscreen:after {
+    #bubble.offscreen:after {
         position: fixed;
         bottom: 0;
         left: 75%;
