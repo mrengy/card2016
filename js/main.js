@@ -78,11 +78,18 @@ $( document ).ready(function() {
     var $window = $(window),
         $footer = $('footer'),
         $bubble = $('#bubble'),
-        footerTop = $footer.offset().top;
+        $silhouettes = $('#silhouettes'),
+        silhouettesHeight = $silhouettes.height(),
+        footerHeight = $footer.height();
+
+    $window.resize(function(){
+        silhouettesHeight = $silhouettes.height();
+        footerHeight = $footer.height();
+    });
 
     $window.scroll(function(){
-        $bubble.toggleClass('offscreen', $window.scrollTop() < footerTop);
-        console.log("footerTop: "+footerTop);
+        $bubble.toggleClass('offscreen', $window.scrollTop() < (silhouettesHeight - footerHeight - 60));
+        console.log("silhouettesHeight: "+silhouettesHeight);
         console.log("scrollTop: "+$window.scrollTop());
     });
 });
