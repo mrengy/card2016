@@ -247,7 +247,7 @@ a {
 .bubble {
     color:#999;
     position: relative;
-    width: 100%;
+    width: 85%;
     height:2em;
     padding: 1em;
     background: #FFFFFF;
@@ -275,13 +275,13 @@ a {
     position:fixed;
     bottom:15px;
     top:auto;
-    width:45%;
+    width:85%;
 }
 
 .bubble.offscreen:after {
     position: fixed;
     bottom: 0;
-    left: 75%;
+    left: 50%;
 }
 
 body{
@@ -306,7 +306,22 @@ body{
     }
     .bubble{
         position:absolute;
+        width:100%;
         top:-4em;
+    }
+
+    /*offscreen bubble*/
+    .bubble.offscreen{
+        position:fixed;
+        bottom:15px;
+        top:auto;
+        width:45%;
+    }
+
+    .bubble.offscreen:after {
+        position: fixed;
+        bottom: 0;
+        left: 75%;
     }
 }
 
