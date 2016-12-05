@@ -275,20 +275,13 @@ a {
     position:fixed;
     bottom:15px;
     top:auto;
+    width:45%;
 }
 
 .bubble.offscreen:after {
-    content: '';
     position: fixed;
-    border-style: solid;
-    border-width: 15px 15px 0;
-    border-color: #FFFFFF transparent;
-    display: block;
-    width: 0;
-    z-index: 1;
-    margin-left: -15px;
     bottom: 0;
-    left: 50%;
+    left: 75%;
 }
 
 body{
