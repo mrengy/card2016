@@ -90,6 +90,8 @@ $( document ).ready(function() {
     $window.scroll(function(){
         $bubble.toggleClass('offscreen', $window.scrollTop() < (silhouettesHeight - footerHeight - 60));
         console.log("silhouettesHeight: "+silhouettesHeight);
+        console.log("footerHeight: "+footerHeight);
+        console.log("silhouettesHeight - footerHeight: "+ (silhouettesHeight - footerHeight));
         console.log("scrollTop: "+$window.scrollTop());
     });
 });
