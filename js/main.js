@@ -63,7 +63,7 @@ $( document ).ready(function() {
     		lightning[0].css("left", lThis);
     		lThis ++;
             if ( (lightningSpawning == false) && ( parseFloat(lightning[0].css("left")) > $(window).width() ) ){
-                console.log('start the party');
+                console.log('start the party!');
                 lightningSpawning = true;
             }
     	}
