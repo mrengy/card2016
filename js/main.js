@@ -76,32 +76,16 @@ $( document ).ready(function() {
 
     /*positioning bubble*/
     var $window = $(window),
-        $footer = $('footer'),
         $bubble = $('#bubble'),
-        $silhouettes = $('#silhouettes'),
-        silhouettesHeight = $silhouettes.height(),
-        windowHeight = $window.height(),
-        bubbleTop = $bubble.offset().top,
-        footerHeight = $footer.height();
+        windowHeight = $window.height();
+        bubbleTop = $bubble.offset().top;
 
     $window.resize(function(){
-        silhouettesHeight = $silhouettes.height();
-        footerHeight = $footer.height();
         windowHeight = $window.height();
-        bubbleTop = $bubble.offset().top
+        bubbleTop = $bubble.offset().top;
     });
 
     $window.scroll(function(){
         $bubble.toggleClass('offscreen', ($window.scrollTop() + windowHeight) < bubbleTop);
-        console.log("windowHeight: "+windowHeight);
-        console.log("bubbleTop: "+bubbleTop);
-
-
-        /*
-        console.log("silhouettesHeight: "+silhouettesHeight);
-        console.log("footerHeight: "+footerHeight);
-        console.log("silhouettesHeight - footerHeight: "+ (silhouettesHeight - footerHeight));
-        */
-        console.log("scrollTop: "+$window.scrollTop());
     });
 });
