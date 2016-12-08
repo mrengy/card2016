@@ -85,7 +85,9 @@ $( document ).ready(function() {
         bubbleTop = $bubble.offset().top;
     });
 
+    /*
     $window.scroll(function(){
         $bubble.toggleClass('offscreen', ($window.scrollTop() + windowHeight) < bubbleTop);
     });
+    */
 });
