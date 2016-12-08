@@ -62,9 +62,11 @@ $( document ).ready(function() {
     	if( $.inArray("slide-3",slideCompleted) !== -1){
     		lightning[0].css("left", lThis);
     		lThis ++;
-            if ( (lightningSpawning == false) && ( parseFloat(lightning[0].css("left")) > $(window).width() ) ){
+            if ( (lightningSpawning == false) && ( parseFloat(lightning[0].css("left")) > windowWidth ) ){
                 console.log('start the party!');
                 lightningSpawning = true;
+                lightning[0].detach();
+
             }
     	}
     }
@@ -77,17 +79,24 @@ $( document ).ready(function() {
     /*positioning bubble*/
     var $window = $(window),
         $bubble = $('#bubble'),
-        windowHeight = $window.height();
-        bubbleTop = $bubble.offset().top;
+        windowHeight,
+        windowWidth,
+        bubbleTop;
 
-    $window.resize(function(){
+    function recalculateWindow(){
         windowHeight = $window.height();
+        windowWidth = $window.width();
         bubbleTop = $bubble.offset().top;
-    });
+    }
 
-    /*
+    // run once on start
+    recalculateWindow();
+    
+    //run again on each window resize
+    $window.resize(recalculateWindow);
+    
     $window.scroll(function(){
         $bubble.toggleClass('offscreen', ($window.scrollTop() + windowHeight) < bubbleTop);
     });
-    */
+    
 });
