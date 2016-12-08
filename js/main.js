@@ -55,10 +55,10 @@ $( document ).ready(function() {
     lightning[0].css("top", topThis);
 
     	/*moving lightning*/
-    var lightningMoveInterval = setInterval(moveLightning, 10);
+    var lightningMoveInterval = setInterval(moveLightning, 33);
     
     function moveLightning(){
-    	//only start when slide 3 is done
+    	//only start when slide 3 is done - need less costly way to detect the start
     	if( $.inArray("slide-3",slideCompleted) !== -1){
     		lightning[0].css("left", lThis);
     		lThis ++;
