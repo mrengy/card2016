@@ -55,21 +55,30 @@ $( document ).ready(function() {
     lightning[0].css("top", topThis);
 
     	/*moving lightning*/
-    var lightningMoveInterval = setInterval(moveLightning, 33);
+    var lightningMoveInterval ;
     
     function moveLightning(){
     	//only start when slide 3 is done - need less costly way to detect the start
-    	if( $.inArray("slide-3",slideCompleted) !== -1){
+    	//if( $.inArray("slide-3",slideCompleted) !== -1){
+
+            //moving single lightning
     		lightning[0].css("left", lThis);
     		lThis ++;
+
+            //when lighning reached the other side
             if ( (lightningSpawning == false) && ( parseFloat(lightning[0].css("left")) > windowWidth ) ){
-                console.log('start the party!');
+                console.log('lightning reached other side');
                 lightningSpawning = true;
                 lightning[0].detach();
 
             }
-    	}
+    	//}
     }
+
+    $('#kepler a').one( 'click', function(){
+        lightningMoveInterval = setInterval(moveLightning, 33);
+        return false;
+    });
 
     	/*reusable generic functions*/
     function getRandomInt (min, max) {
