@@ -4,7 +4,6 @@ $( document ).ready(function() {
     var transitionTime = 300;
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
     var slideCompleted = new Array();
-    var lightningSpawning = false;
 
     function fadeOutSlide1(){
     	fadeOut($("#slide-1"));
@@ -44,34 +43,47 @@ $( document ).ready(function() {
     var w0 = parseInt(lightning[0].css("width"), 10);
     var h0 = parseInt(lightning[0].css("height"), 10);
     var minWidth = w0 / 4;
+    /* initial left position of prototype lightning*/
+    var l0 = parseInt(lightning[0].css("left"));
 
     	/*setting next lightning*/
     function newLightning(pos){
         lightning[pos].css("width", getRandomInt(minWidth, w0));
-        lightning[pos].css("height", lightning[pos][pos].width/ (w0/h0));
+        lightning[pos].css("height", lightning[pos][0].width/ (w0/h0));
         lightning[pos].css("top", getRandomInt(0, $(window).height() ));
+        lightning[pos].css("left", l0);
     }
 
     //make the first lightning
     newLightning(0);
-    
-    //console.log(lightning[0][0].width);
 
     	/*global variable for interval to move the lightning*/
     var lightningMoveInterval ;
 
-        /* initial left position of prototype lightning*/
-    var lThis = parseInt(lightning[0].css("left"));
-
     function moveLightning(){
         //moving single lightning
-		lightning[0].css("left", lThis);
-		lThis ++;
+
+        var lThis = l0;
+        console.log('set lThis to '+ lThis);
+        return function inc(){
+            console.log(lThis);
+            return lThis ++;
+        }
+
+        lightning[0].css("left", lThis);
+        //console.log(lThis);
+        /*
+        if (lThis == null){
+            lThis = l0;
+            console.log('set lThis to '+ lThis);
+        }
+        */
+        //console.log(lThis);
 
         //when lighning reached the other side
-        if ( (lightningSpawning == false) && ( parseFloat(lightning[0].css("left")) > windowWidth ) ){
+        if ( parseFloat(lightning[0].css("left")) > windowWidth ){
             console.log('lightning reached other side');
-            lightningSpawning = true;
+
             //remove the object (this keeps some of the data - there's another way to do it)
             lightning[0].detach();
 
@@ -83,7 +95,7 @@ $( document ).ready(function() {
         $window.off('resize');
         $window.off('scroll');
         fadeOut($('#bubble'));
-        lightningMoveInterval = setInterval(moveLightning, 33);
+        lightningMoveInterval = setInterval(moveLightning(), 33);
         //don't follow the link
         return false;
     });
