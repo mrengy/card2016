@@ -40,7 +40,7 @@ $( document ).ready(function() {
     var lightningTime = 2000;
 
     	/*initial lightning definition*/
-	lightning[0] = $(".lightning");
+	lightning.push($(".lightning"));
     var w0 = parseInt(lightning[0].css("width"), 10);
     var h0 = parseInt(lightning[0].css("height"), 10);
     var minWidth = w0 / 4;
