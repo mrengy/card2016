@@ -75,7 +75,9 @@ $( document ).ready(function() {
     	//}
     }
 
+    // run this function only once
     $('#kepler a').one( 'click', function(){
+        fadeOut($('#bubble'));
         lightningMoveInterval = setInterval(moveLightning, 33);
         return false;
     });
