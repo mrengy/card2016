@@ -54,31 +54,31 @@ $( document ).ready(function() {
     lightning[0].css("height", hThis);
     lightning[0].css("top", topThis);
 
-    	/*moving lightning*/
+    	/*global variable for interval to move the lightning*/
     var lightningMoveInterval ;
     
     function moveLightning(){
-    	//only start when slide 3 is done - need less costly way to detect the start
-    	//if( $.inArray("slide-3",slideCompleted) !== -1){
+        //moving single lightning
+		lightning[0].css("left", lThis);
+		lThis ++;
 
-            //moving single lightning
-    		lightning[0].css("left", lThis);
-    		lThis ++;
+        //when lighning reached the other side
+        if ( (lightningSpawning == false) && ( parseFloat(lightning[0].css("left")) > windowWidth ) ){
+            console.log('lightning reached other side');
+            lightningSpawning = true;
+            //remove the object (this keeps some of the data - there's another way to do it)
+            lightning[0].detach();
 
-            //when lighning reached the other side
-            if ( (lightningSpawning == false) && ( parseFloat(lightning[0].css("left")) > windowWidth ) ){
-                console.log('lightning reached other side');
-                lightningSpawning = true;
-                lightning[0].detach();
-
-            }
-    	//}
+        }
     }
 
-    // run this function only once
+    // run this function only once. Start the lightning moving and get rid of the functions to reposition the speech bubble
     $('#kepler a').one( 'click', function(){
+        $window.off('resize');
+        $window.off('scroll');
         fadeOut($('#bubble'));
         lightningMoveInterval = setInterval(moveLightning, 33);
+        //don't follow the link
         return false;
     });
 
@@ -98,16 +98,20 @@ $( document ).ready(function() {
         windowHeight = $window.height();
         windowWidth = $window.width();
         bubbleTop = $bubble.offset().top;
+        console.log('recalculate ran');
     }
 
-    // run once on start
-    recalculateWindow();
-    
-    //run again on each window resize
-    $window.resize(recalculateWindow);
-    
-    $window.scroll(function(){
+    function toggleOffscreen(){
         $bubble.toggleClass('offscreen', ($window.scrollTop() + windowHeight) < bubbleTop);
-    });
+        console.log('scroll ran');
+    }
+
+    // run recalculate once on start
+    recalculateWindow();
+    //run recalculate again on each window resize
+    $window.on('resize', recalculateWindow);
+
+    //run toggleOffscreen on each scroll event
+    $window.on('scroll', toggleOffscreen);        
     
 });
