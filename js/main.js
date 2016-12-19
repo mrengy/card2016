@@ -39,24 +39,30 @@ $( document ).ready(function() {
         /* time to wait between lightning (also randomly adjusted each time)*/
     var lightningTime = 2000;
 
-    	/*initial lightning definition*/
+    	/*prototype lightning definition*/
 	lightning.push($(".lightning"));
     var w0 = parseInt(lightning[0].css("width"), 10);
     var h0 = parseInt(lightning[0].css("height"), 10);
     var minWidth = w0 / 4;
 
     	/*setting next lightning*/
-    var wThis = getRandomInt(minWidth, w0);
-    var hThis = wThis / (w0/h0)
-    var topThis = getRandomInt(0, $(window).height());
-    var lThis = parseInt(lightning[0].css("left"));
-    lightning[0].css("width", wThis);
-    lightning[0].css("height", hThis);
-    lightning[0].css("top", topThis);
+    function newLightning(pos){
+        lightning[pos].css("width", getRandomInt(minWidth, w0));
+        lightning[pos].css("height", lightning[pos][pos].width/ (w0/h0));
+        lightning[pos].css("top", getRandomInt(0, $(window).height() ));
+    }
+
+    //make the first lightning
+    newLightning(0);
+    
+    //console.log(lightning[0][0].width);
 
     	/*global variable for interval to move the lightning*/
     var lightningMoveInterval ;
-    
+
+        /* initial left position of prototype lightning*/
+    var lThis = parseInt(lightning[0].css("left"));
+
     function moveLightning(){
         //moving single lightning
 		lightning[0].css("left", lThis);
