@@ -50,6 +50,11 @@ $( document ).ready(function() {
     function newLightning(pos){
         lightning[pos].css("width", getRandomInt(minWidth, w0));
         lightning[pos].css("height", lightning[pos][0].width/ (w0/h0));
+        console.log("lightning 0 width = "+lightning[pos][0].width);
+        console.log("w0/h0 = "+(w0/h0));
+        console.log("resulting height calculated = "+lightning[pos][0].width/ (w0/h0));
+        console.log("resulting height actual = "+lightning[pos][0].height);
+
         lightning[pos].css("top", getRandomInt(0, $(window).height() ));
         lightning[pos].css("left", l0);
     }
@@ -62,7 +67,7 @@ $( document ).ready(function() {
 
     function moveLightning(){
         //moving single lightning
-
+        /*
         var lThis = l0;
         console.log('set lThis to '+ lThis);
         return function inc(){
@@ -71,14 +76,6 @@ $( document ).ready(function() {
         }
 
         lightning[0].css("left", lThis);
-        //console.log(lThis);
-        /*
-        if (lThis == null){
-            lThis = l0;
-            console.log('set lThis to '+ lThis);
-        }
-        */
-        //console.log(lThis);
 
         //when lighning reached the other side
         if ( parseFloat(lightning[0].css("left")) > windowWidth ){
@@ -88,14 +85,17 @@ $( document ).ready(function() {
             lightning[0].detach();
 
         }
+        */
+        lightning[0].animate({left: windowWidth}, 10000, 'swing');
     }
 
     // run this function only once. Start the lightning moving and get rid of the functions to reposition the speech bubble
     $('#kepler a').one( 'click', function(){
-        $window.off('resize');
+        //$window.off('resize');
         $window.off('scroll');
         fadeOut($('#bubble'));
-        lightningMoveInterval = setInterval(moveLightning(), 33);
+        //lightningMoveInterval = setInterval(moveLightning(), 33);
+        moveLightning();
         //don't follow the link
         return false;
     });

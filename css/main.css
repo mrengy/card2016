@@ -139,9 +139,8 @@ a {
     z-index:10;
     width:216px;
     height:120px;
-    /*left:-216px;
-    top:-120px;*/
     left:-216px;
+    /*top:-120px;*/
     top:0;
 }
 
