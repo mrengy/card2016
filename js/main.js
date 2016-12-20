@@ -6,6 +6,8 @@ $( document ).ready(function() {
     var slideCompleted = new Array();
     var lightningTravelTime = 3000;
     var lightningWaitTime = 2000;
+    var thisLightning;
+    var thisLightningWidth;
 
     function fadeOutSlide1(){
     	fadeOut($("#slide-1"));
@@ -47,13 +49,18 @@ $( document ).ready(function() {
 
     	/*setting next lightning*/
     function newLightning(pos){
-        lightning[pos].css("width", getRandomInt(minWidth, w0));
-        lightning[pos].css("height", lightning[pos][0].width/ (w0/h0));
-        lightning[pos].css("top", getRandomInt(0, windowHeight ));
-        lightning[pos].css("left", l0);
+        thisLightning = lightning[0].clone();
+        thisLightningWidth = getRandomInt(minWidth, w0);
+
+        thisLightning.css("width", thisLightningWidth);
+        thisLightning.css("height", thisLightningWidth / (w0/h0));
+        thisLightning.css("top", getRandomInt(0, windowHeight ));
+
+        thisLightning.appendTo(lightning[0].parent());
+        lightning.push(thisLightning);
     }
 
-    //make the first lightning
+    //make the next lightning
     newLightning(0);
 
     	/*global variable for interval to move the lightning*/
@@ -61,7 +68,10 @@ $( document ).ready(function() {
 
     function moveLightning(){
         $.each(lightning, function(key, value){
-            this.animate({left: windowWidth}, lightningTravelTime*(this[0].width/w0), 'swing');
+            //skip the first one, as it will remain as the prototype
+            if(key > 0){
+                this.animate({left: windowWidth}, lightningTravelTime*(this[0].width/w0), 'swing');
+            }
         });
     }
 
