@@ -58,7 +58,7 @@ textarea {
    ========================================================================== */
 
 body {
-    font: 16px/1.4 Helvetica, Helvetica Neue, Arial;
+    font: 16px/1.4 Georgia, Times, "Times New Roman", serif;
     background:#000;
 }
 
@@ -163,7 +163,7 @@ a {
     color:#999;
     position: relative;
     width: 90%;
-    height:2em;
+    height:1em;
     padding: 1em;
     background: #FFF;
     -webkit-border-radius: 10px;
