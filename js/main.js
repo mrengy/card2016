@@ -48,7 +48,7 @@ $( document ).ready(function() {
     var l0 = parseInt(lightning[0].css("left"));
 
     	/*setting next lightning*/
-    function newLightning(pos){
+    function newLightning(){
         thisLightning = lightning[0].clone();
         thisLightningWidth = getRandomInt(minWidth, w0);
 
@@ -61,7 +61,7 @@ $( document ).ready(function() {
     }
 
     //make the next lightning
-    newLightning(0);
+    newLightning();
 
     	/*global variable for interval to move the lightning*/
     var lightningMoveInterval ;
