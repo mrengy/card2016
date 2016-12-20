@@ -58,10 +58,13 @@ $( document ).ready(function() {
 
         thisLightning.appendTo(lightning[0].parent());
         lightning.push(thisLightning);
+
+        //moving it after creating it
+        thisLightning.animate({left: windowWidth}, lightningTravelTime, 'swing');
     }
 
     //make the next lightning
-    newLightning();
+    //newLightning();
 
     	/*global variable for interval to move the lightning*/
     var lightningMoveInterval ;
@@ -80,8 +83,8 @@ $( document ).ready(function() {
         //$window.off('resize');
         $window.off('scroll');
         fadeOut($('#bubble'));
-        //lightningMoveInterval = setInterval(moveLightning(), 33);
-        moveLightning();
+        //moveLightning();
+        newLightning();
         //don't follow the link
         return false;
     });
