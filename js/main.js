@@ -5,9 +5,10 @@ $( document ).ready(function() {
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
     var slideCompleted = new Array();
     var lightningTravelTime = 3000;
-    var lightningWaitTime = 2000;
+    var lightningWaitTime = 1000;
     var thisLightning;
     var thisLightningWidth;
+    var lightningCounter = 1;
 
     function fadeOutSlide1(){
     	fadeOut($("#slide-1"));
@@ -47,28 +48,38 @@ $( document ).ready(function() {
     /* initial left position of prototype lightning*/
     var l0 = parseInt(lightning[0].css("left"));
 
-    	/*setting next lightning*/
+    /*spawning and moving next lightning*/
     function newLightning(){
         thisLightning = lightning[0].clone();
+        lightning.push(thisLightning);
+
         thisLightningWidth = getRandomInt(minWidth, w0);
 
         thisLightning.css("width", thisLightningWidth);
         thisLightning.css("height", thisLightningWidth / (w0/h0));
-        thisLightning.css("top", getRandomInt(0, windowHeight ));
+        thisLightning.css("top", getRandomInt(0, windowHeight)*1.5);
+        thisLightning.attr('id', 'lightning-'+lightningCounter);
 
         thisLightning.appendTo(lightning[0].parent());
-        lightning.push(thisLightning);
 
         //moving it after creating it
-        thisLightning.animate({left: windowWidth}, lightningTravelTime, 'swing');
+        thisLightning.animate({left: windowWidth}, lightningTravelTime*(thisLightningWidth/w0), 'swing', function(){
+            //remove this lightning from DOM
+            this.remove();
+            //remove this lightning from array
+            lightning.splice($.inArray(thisLightning, lightning),1);
+        });
+
+        lightningCounter ++;
+
+        //run again after random time
+        window.setTimeout(newLightning, getRandomInt(0,lightningWaitTime));
     }
 
     //make the next lightning
     //newLightning();
 
-    	/*global variable for interval to move the lightning*/
-    var lightningMoveInterval ;
-
+    //remove if no longer needed
     function moveLightning(){
         $.each(lightning, function(key, value){
             //skip the first one, as it will remain as the prototype
@@ -85,6 +96,7 @@ $( document ).ready(function() {
         fadeOut($('#bubble'));
         //moveLightning();
         newLightning();
+        //newLightning();
         //don't follow the link
         return false;
     });
