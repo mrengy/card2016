@@ -1,366 +1,54 @@
-/*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
+/*
+Error: Invalid CSS after "#FFF": expected expression (e.g. 1px, bold), was ";"
+        on line 5 of scss/main.scss.css
 
-html {
-    color: #FFF;
-    font-size: 1em;
-    line-height: 1.4;
-}
+1: /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ *\/
+2: /*scss *\/
+3: 
+4: html {
+5:     color: #FFF;
+6:     font-size: 1em;
+7:     line-height: 1.4;
+8: }
+9: 
+10: ::-moz-selection {
 
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
-}
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-    vertical-align: middle;
-}
-
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-textarea {
-    resize: vertical;
-}
-
-.browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
-
-/* ===== Initializr Styles ==================================================
-   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
-   ========================================================================== */
-
-body {
-    font: 16px/1.4 Helvetica, Helvetica Neue, Arial;
-    background:#000;
-}
-
-.wrapper {
-    width: 90%;
-    margin: 0 5%;
-}
-
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-a {
-    color:#fff;
-    text-decoration:underline;
-}
-
-.slide {
-    width:100%;
-    /*height:100%;*/
-    position:absolute;
-    text-align:center;
-}
-
-.full-img{
-    width:auto;
-    height:auto;
-    max-width:100%;
-    /*max-height:100%;*/
-    margin:0 auto;
-}
-
-.main-container{
-    text-align:left;
-}
-
-.clear{
-    opacity:0.0;
-}
-
-    /* z-indices */
-
-    #slide-1, #credit{
-        z-index:9;
-    }
-    #slide-2{
-        z-index:8;
-    }
-    #slide-3{
-        z-index:6;
-        background:#AD6E1A;
-        overflow:hidden;
-    }
-    #slide-4{
-        z-index:7;
-        overflow:hidden;
-    }
-    #credit{
-        position: relative;
-    }
-
-#slide-4{
-    height:100%;
-    top:0;
-    border:1px solid #f00;
-}
-
-#kepler{
-    z-index:10;
-    position:relative;
-    margin:2em -2em -3em 0;
-    text-align:right;
-}
-
-.lightning{
-    position:absolute;
-    z-index:10;
-    width:216px;
-    height:120px;
-    /*left:-216px;
-    top:-120px;*/
-    left:-216px;
-    top:0;
-}
-
-#credit {
-    text-align:left;
-    position:relative;
-}
-
-#credit h2{
-    font-size:16px;
-    line-height:26px;
-    margin:0;
-}
-
-#credit p{
-    margin:0;
-}
-
-#bubble {
-    color:#999;
-    position: relative;
-    width: 90%;
-    height:2em;
-    padding: 1em;
-    background: #FFF;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    text-align:left;
-}
-
-#bubble:after {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 15px 15px 0;
-    border-color: #FFFFFF transparent;
-    display: block;
-    width: 0;
-    z-index: 1;
-    margin-left: -15px;
-    bottom: -15px;
-    left: 50%;
-}
-
-#bubble.offscreen{
-    position:fixed;
-    bottom:15px;
-    top:auto;
-    width:85%;
-}
-
-#bubble.offscreen:after {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-}
-
-body, html{
-    max-width:100%;
-    overflow-x:hidden;
-}
-
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-
-@media only screen and (min-width: 480px) {
-
-}
-
-@media only screen and (min-width: 680px) {
-    footer div{
-        width:50%;
-        float:left;
-    }
-    #kepler{
-        margin-top:0;
-    }
-    #bubble{
-        position:absolute;
-        width:100%;
-        top:-4em;
-    }
-
-    /*offscreen bubble*/
-    #bubble.offscreen{
-        position:fixed;
-        bottom:15px;
-        top:auto;
-        width:45%;
-    }
-
-    #bubble.offscreen:after {
-        position: fixed;
-        bottom: 0;
-        left: 75%;
-    }
-}
-
-@media only screen and (min-width: 1140px) {
-
-/* ===============
-    Maximal Width
-   =============== */
-
-    .wrapper {
-        width: 1026px; /* 1140px - 10% for margins */
-        margin: 0 auto;
-    }
-}
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-.hidden {
-    display: none !important;
-    visibility: hidden;
-}
-
-.visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
-}
-
-.invisible {
-    visibility: hidden;
-}
-
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-.clearfix {
-    *zoom: 1;
-}
-
-/* ==========================================================================
-   Print styles
-   ========================================================================== */
-
-@media print {
-    *,
-    *:before,
-    *:after {
-        background: transparent !important;
-        color: #000 !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    thead {
-        display: table-header-group;
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
-}
+Backtrace:
+scss/main.scss.css:5
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/scss/parser.rb:1207:in `expected'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/script/lexer.rb:229:in `expected!'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/script/parser.rb:744:in `assert_done'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/script/parser.rb:76:in `parse'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/script/parser.rb:240:in `parse'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/script.rb:27:in `parse'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:1151:in `parse_script'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:721:in `parse_property'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:692:in `parse_property_or_rule'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:658:in `parse_line'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:536:in `build_tree'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:555:in `block in append_children'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:554:in `each'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:554:in `append_children'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:545:in `block in build_tree'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:538:in `each'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:538:in `build_tree'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:555:in `block in append_children'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:554:in `each'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:554:in `append_children'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:409:in `_to_tree'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:391:in `run'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/base.rb:52:in `parse'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/base.rb:19:in `parse!'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/bin/sass:13:in `<top (required)>'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/bin/sass:23:in `load'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/bin/sass:23:in `<main>'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `eval'
+/Users/mikeeng/.rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"#FFF\": expected expression (e.g. 1px, bold), was \";\"\A         on line 5 of scss/main.scss.css\A \A 1: /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */\A 2: /*scss */\A 3: \A 4: html {\A 5:     color: #FFF;\A 6:     font-size: 1em;\A 7:     line-height: 1.4;\A 8: }\A 9: \A 10: ::-moz-selection {"; }
