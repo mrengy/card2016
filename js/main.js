@@ -1,7 +1,7 @@
 $( document ).ready(function() {
     /* slide transitions */
-    var pauseTime = 400;
-    var transitionTime = 300;
+    var pauseTime = 4000;
+    var transitionTime = 3000;
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
     var slideCompleted = new Array();
     var lightningTravelTime = 3000;
@@ -18,6 +18,11 @@ $( document ).ready(function() {
 
     function revealSlide3(){
     	reveal($("#slide-3"));
+        var afterSlide3Timeout = window.setTimeout(revealBubble, pauseTime*2);
+    }
+
+    function revealBubble(){
+        reveal($("#bubble"));
     }
 
     function fadeOut(target){
@@ -77,7 +82,6 @@ $( document ).ready(function() {
     }
 
     //make the next lightning
-    //newLightning();
 
     //remove if no longer needed
     function moveLightning(){
