@@ -245,14 +245,14 @@ body, html{
     }
 }
 
-@media only screen and (min-width: 1140px) {
+@media only screen and (min-width: 1066px) {
 
 /* ===============
     Maximal Width
 =============== */
 
     .wrapper {
-        width: 1026px; /* 1140px - 10% for margins */
+        width: 960px; /* 1066px - 10% for margins */
         margin: 0 auto;
     }
 }
