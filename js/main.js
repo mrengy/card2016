@@ -101,6 +101,7 @@ $( document ).ready(function() {
         //moveLightning();
         newLightning();
         //newLightning();
+        $('#keplerImg').unwrap();
         //don't follow the link
         return false;
     });
