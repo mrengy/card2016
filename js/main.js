@@ -102,6 +102,10 @@ $( document ).ready(function() {
         newLightning();
         //newLightning();
         $('#keplerImg').unwrap();
+
+        //track google analytics event
+        ga('send', 'event', 'Kepler', 'click', 'Easter Eggs');
+
         //don't follow the link
         return false;
     });
