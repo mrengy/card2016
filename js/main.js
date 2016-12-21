@@ -77,20 +77,11 @@ $( document ).ready(function() {
 
         lightningCounter ++;
 
+        //track google analytics event
+        ga('send', 'event', 'lightning', 'spawn', 'Easter Eggs');
+
         //run again after random time
         window.setTimeout(newLightning, getRandomInt(0,lightningWaitTime));
-    }
-
-    //make the next lightning
-
-    //remove if no longer needed
-    function moveLightning(){
-        $.each(lightning, function(key, value){
-            //skip the first one, as it will remain as the prototype
-            if(key > 0){
-                this.animate({left: windowWidth}, lightningTravelTime*(this[0].width/w0), 'swing');
-            }
-        });
     }
 
     // run this function only once. Start the lightning moving and get rid of the functions to reposition the speech bubble
