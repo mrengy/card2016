@@ -126,12 +126,12 @@ $( document ).ready(function() {
         windowHeight = $window.height();
         windowWidth = $window.width();
         bubbleTop = $bubble.offset().top;
-        console.log('recalculate ran');
+        //console.log('recalculate ran');
     }
 
     function toggleOffscreen(){
         $bubble.toggleClass('offscreen', ($window.scrollTop() + windowHeight) < bubbleTop);
-        console.log('scroll ran');
+        //console.log('scroll ran');
     }
 
     // run recalculate once on start
