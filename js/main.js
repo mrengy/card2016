@@ -68,6 +68,8 @@ $( document ).ready(function() {
         } else if (direction == 'right'){
             thisLightning = lightningRight[0].clone();
             lightningRight.push(thisLightning);
+            //hack to only display spawned lightning so that one can't scroll to see the one to the right
+            thisLightning.css("display", "inline");
         }
 
         thisLightningWidth = getRandomInt(minWidth, w0);
