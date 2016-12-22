@@ -1,7 +1,7 @@
 $( document ).ready(function() {
     /* slide transitions */
-    var pauseTime = 4000;
-    var transitionTime = 3000;
+    var pauseTime = 400;
+    var transitionTime = 300;
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
     var slideCompleted = new Array();
     var lightningTravelTime = 3000;
@@ -45,18 +45,33 @@ $( document ).ready(function() {
     /*lightning*/
     var lightning = new Array();
 
-    	/*prototype lightning definition*/
+    /*lightning right*/
+    var lightningRight = new Array();
+
+    /*prototype lightning definition*/
 	lightning.push($(".lightning"));
+    lightningRight.push($(".lightningRight"));
+
     var w0 = parseInt(lightning[0].css("width"), 10);
     var h0 = parseInt(lightning[0].css("height"), 10);
     var minWidth = w0 / 4;
-    /* initial left position of prototype lightning*/
+    /* initial left position of prototype lightnings*/
     var l0 = parseInt(lightning[0].css("left"));
+    var r0 = parseInt(lightningRight[0].css("left"));
 
     /*spawning and moving next lightning*/
-    function newLightning(){
-        thisLightning = lightning[0].clone();
-        lightning.push(thisLightning);
+    function newLightning(direction){
+
+        if(direction == 'left'){
+            thisLightning = lightning[0].clone();
+            lightning.push(thisLightning);
+            var endLeftPos = windowWidth;
+        } else if (direction == 'right'){
+            thisLightning = lightningRight[0].clone();
+            lightningRight.push(thisLightning);
+            var endRightPos = w0*(-1);
+            console.log('right generated');
+        }
 
         thisLightningWidth = getRandomInt(minWidth, w0);
 
@@ -68,20 +83,34 @@ $( document ).ready(function() {
         thisLightning.appendTo(lightning[0].parent());
 
         //moving it after creating it
-        thisLightning.animate({left: windowWidth}, lightningTravelTime*(thisLightningWidth/w0), 'swing', function(){
-            //remove this lightning from DOM
-            this.remove();
-            //remove this lightning from array
-            lightning.splice($.inArray(thisLightning, lightning),1);
-        });
+        if(direction == 'left'){
+            thisLightning.animate({left: endLeftPos}, lightningTravelTime*(thisLightningWidth/w0), 'swing', function(){
+                //remove this lightning from DOM
+                this.remove();
+                //remove this lightning from array
+                lightning.splice($.inArray(thisLightning, lightning),1);
+            });
+        } else if (direction == 'right'){
+            thisLightning.animate({left: endRightPos}, lightningTravelTime*(thisLightningWidth/w0), 'swing', function(){
+                //remove this lightning from DOM
+                this.remove();
+                //remove this lightning from array
+                lightning.splice($.inArray(thisLightning, lightningRight),1);
+            });
+        }
 
         lightningCounter ++;
 
         //track google analytics event
-        ga('send', 'event', 'lightning', 'spawn', 'Easter Eggs');
+        ga('send', 'event', 'lightning', direction, 'Easter Eggs');
 
-        //run again after random time
-        window.setTimeout(newLightning, getRandomInt(0,lightningWaitTime));
+        //run left lightning again after random time
+        if(direction == 'left'){
+            window.setTimeout(function(){
+                newLightning(direction);
+            }, getRandomInt(0,lightningWaitTime));
+        }
+
     }
 
     // run this function only once. Start the lightning moving and get rid of the functions to reposition the speech bubble
@@ -90,7 +119,7 @@ $( document ).ready(function() {
         $window.off('scroll');
         fadeOut($('#bubble'));
         //moveLightning();
-        newLightning();
+        newLightning('left');
         //newLightning();
         $('#keplerImg').unwrap();
 
@@ -100,6 +129,17 @@ $( document ).ready(function() {
         //don't follow the link
         return false;
     });
+
+    //spawn lightning swimming from the right when lightning swimming from the left is clicked
+    $('#slide-2').on('click', '.lightning', function(){
+        newLightning('right');
+        console.log('got em');
+    });
+
+    //debug right lightning
+    window.setInterval(function(){
+                newLightning('right');
+            }, 500);
 
     	/*reusable generic functions*/
     function getRandomInt (min, max) {

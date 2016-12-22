@@ -139,8 +139,20 @@ a {
     width:216px;
     height:120px;
     left:-216px;
-    /*top:-120px;*/
     top:0;
+}
+
+.lightningRight{
+	position:absolute;
+    z-index:10;
+    width:216px;
+    height:120px;
+    right:-216px;
+    top:0;
+    -moz-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    transform: scale(-1, 1);
 }
 
 #credit {
