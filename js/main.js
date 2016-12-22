@@ -9,7 +9,6 @@ $( document ).ready(function() {
     var thisLightning;
     var thisLightningWidth;
     var lightningCounter = 1;
-    var rightSpawnNumber = 4;
 
     function fadeOutSlide1(){
     	fadeOut($("#slide-1"));
@@ -127,7 +126,11 @@ $( document ).ready(function() {
 
     //spawn lightning swimming from the right when lightning is clicked
     $('#slide-2').on('click', '.lightning', function(){
-        for (count = 0; count < rightSpawnNumber; count++){
+        var clickedLightningID = this.id;
+        //console.log(parseInt(($('#'+clickedLightningID).css('width'))));
+        var sizeClicked = parseInt(($('#'+clickedLightningID).css('width')));
+
+        for (count = 0; count <= (w0-sizeClicked)/5; count++){
             newLightning('right');
         }
     });
