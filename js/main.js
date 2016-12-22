@@ -61,15 +61,13 @@ $( document ).ready(function() {
 
     /*spawning and moving next lightning*/
     function newLightning(direction){
-        var endLeftPos ;
+        var endLeftPos = windowWidth;
         if (direction == 'left'){
             thisLightning = lightning[0].clone();
             lightning.push(thisLightning);
-            endLeftPos = windowWidth;
         } else if (direction == 'right'){
             thisLightning = lightningRight[0].clone();
             lightningRight.push(thisLightning);
-            endLeftPos = w0*(-1);
         }
 
         thisLightningWidth = getRandomInt(minWidth, w0);
@@ -82,17 +80,21 @@ $( document ).ready(function() {
         thisLightning.appendTo(lightning[0].parent());
 
         //moving it after creating it
-        thisLightning.animate({left: endLeftPos}, lightningTravelTime*(thisLightningWidth/w0), 'swing', function(){
-                //remove this lightning from DOM
-                this.remove();
-                //remove this lightning from array
-                if (direction == 'left'){
+        if(direction == 'left'){
+            thisLightning.animate({left: endLeftPos}, lightningTravelTime*(thisLightningWidth/w0), 'swing', function(){
+                    //remove this lightning from DOM
+                    this.remove();
+                    //remove this lightning from array
                     lightning.splice($.inArray(thisLightning, lightning),1);
-                } else if (direction == 'right'){
+            });
+        } else if(direction == 'right'){
+            thisLightning.animate({right:endLeftPos},lightningTravelTime*(thisLightningWidth/w0), 'swing', function(){
+                    //remove this lightning from DOM
+                    this.remove();
+                    //remove this lightning from array
                     lightningRight.splice($.inArray(thisLightning, lightningRight),1);
-                }
-        });
-
+            });
+        }
         lightningCounter ++;
 
         //track google analytics event
