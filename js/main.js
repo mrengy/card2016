@@ -50,7 +50,7 @@ $( document ).ready(function() {
     var lightningRight = new Array();
 
     /*prototype lightning definition*/
-	lightning.push($(".lightning"));
+	lightning.push($(".lightningLeft"));
     lightningRight.push($(".lightningRight"));
 
     var w0 = parseInt(lightning[0].css("width"), 10);
@@ -125,8 +125,8 @@ $( document ).ready(function() {
         return false;
     });
 
-    //spawn lightning swimming from the right when lightning swimming from the left is clicked
-    $('#slide-2').on('click', '.lightning, .lightningRight', function(){
+    //spawn lightning swimming from the right when lightning is clicked
+    $('#slide-2').on('click', '.lightning', function(){
         for (count = 0; count < rightSpawnNumber; count++){
             newLightning('right');
         }

@@ -138,17 +138,21 @@ a {
     z-index:10;
     width:216px;
     height:120px;
-    left:-216px;
     top:0;
+    user-drag: none; 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+.lightningLeft{
+	left:-216px;
 }
 
 .lightningRight{
-	position:absolute;
-    z-index:10;
-    width:216px;
-    height:120px;
     right:-216px;
-    top:0;
     -moz-transform: scale(-1, 1);
     -o-transform: scale(-1, 1);
     -webkit-transform: scale(-1, 1);
