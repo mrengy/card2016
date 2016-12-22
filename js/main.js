@@ -1,7 +1,7 @@
 $( document ).ready(function() {
     /* slide transitions */
-    var pauseTime = 400;
-    var transitionTime = 300;
+    var pauseTime = 4000;
+    var transitionTime = 3000;
     var initialTimeout = window.setTimeout(fadeOutSlide1, pauseTime);
     var slideCompleted = new Array();
     var lightningTravelTime = 3000;
@@ -9,6 +9,7 @@ $( document ).ready(function() {
     var thisLightning;
     var thisLightningWidth;
     var lightningCounter = 1;
+    var rightSpawnNumber = 4;
 
     function fadeOutSlide1(){
     	fadeOut($("#slide-1"));
@@ -61,16 +62,15 @@ $( document ).ready(function() {
 
     /*spawning and moving next lightning*/
     function newLightning(direction){
-
-        if(direction == 'left'){
+        var endLeftPos ;
+        if (direction == 'left'){
             thisLightning = lightning[0].clone();
             lightning.push(thisLightning);
-            var endLeftPos = windowWidth;
+            endLeftPos = windowWidth;
         } else if (direction == 'right'){
             thisLightning = lightningRight[0].clone();
             lightningRight.push(thisLightning);
-            var endRightPos = w0*(-1);
-            console.log('right generated');
+            endLeftPos = w0*(-1);
         }
 
         thisLightningWidth = getRandomInt(minWidth, w0);
@@ -83,21 +83,16 @@ $( document ).ready(function() {
         thisLightning.appendTo(lightning[0].parent());
 
         //moving it after creating it
-        if(direction == 'left'){
-            thisLightning.animate({left: endLeftPos}, lightningTravelTime*(thisLightningWidth/w0), 'swing', function(){
+        thisLightning.animate({left: endLeftPos}, lightningTravelTime*(thisLightningWidth/w0), 'swing', function(){
                 //remove this lightning from DOM
                 this.remove();
                 //remove this lightning from array
-                lightning.splice($.inArray(thisLightning, lightning),1);
-            });
-        } else if (direction == 'right'){
-            thisLightning.animate({left: endRightPos}, lightningTravelTime*(thisLightningWidth/w0), 'swing', function(){
-                //remove this lightning from DOM
-                this.remove();
-                //remove this lightning from array
-                lightning.splice($.inArray(thisLightning, lightningRight),1);
-            });
-        }
+                if (direction == 'left'){
+                    lightning.splice($.inArray(thisLightning, lightning),1);
+                } else if (direction == 'right'){
+                    lightningRight.splice($.inArray(thisLightning, lightningRight),1);
+                }
+        });
 
         lightningCounter ++;
 
@@ -131,15 +126,11 @@ $( document ).ready(function() {
     });
 
     //spawn lightning swimming from the right when lightning swimming from the left is clicked
-    $('#slide-2').on('click', '.lightning', function(){
-        newLightning('right');
-        console.log('got em');
+    $('#slide-2').on('click', '.lightning, .lightningRight', function(){
+        for (count = 0; count < rightSpawnNumber; count++){
+            newLightning('right');
+        }
     });
-
-    //debug right lightning
-    window.setInterval(function(){
-                newLightning('right');
-            }, 500);
 
     	/*reusable generic functions*/
     function getRandomInt (min, max) {
